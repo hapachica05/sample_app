@@ -20,8 +20,10 @@ gem 'rails', '3.0.4'
 # Bundle the extra gems:
 # gem 'bj'
 # gem 'nokogiri'
-gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
+gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'gravatar_image_tag'
+
 
 group :development do
 gem 'rspec-rails'
@@ -31,6 +33,7 @@ end
 group :test do
 gem 'rspec'
 gem 'webrat'
+gem 'factory_girl_rails'
 end
 
 # Bundle gems for the local environment. Make sure to
