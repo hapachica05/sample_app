@@ -1,0 +1,23 @@
+<h1>Sign in</h1>
+
+<%= form_for(:session, :url => sessions_path) do |f| %>
+<!-- This declares the name of the resource and the end destination/URL --> 
+  <div class="field">
+    <%= f.label :email %><br />
+    <!-- This labels the field "Email" -->
+    <%= f.text_field :email %>
+    <!-- This generates a field for the email address -->
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign in" %>
+  </div>
+<% end %>
+
+<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<!-- This takes new users to the sign-up page -->
