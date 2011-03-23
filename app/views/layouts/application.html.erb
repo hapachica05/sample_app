@@ -5,6 +5,9 @@
   <title><%=title %></title>
   <%= csrf_meta_tag %>
   <%= render 'layouts/stylesheets' %>
+  <%= javascript_include_tag :defaults %>
+  <!-- allows the "delete" links on the user display page to work, 
+  by including the default Rails JavaScript libraries -->
 </head>
  
  <body>

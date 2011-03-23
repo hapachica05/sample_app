@@ -33,6 +33,23 @@ module SessionsHelper
     # changes the current_user back to nil
   end
   
+  def current_user?(user)
+    user == current_user
+  end
+
+  def deny_access
+    store_location
+    # stores the location of where the user is trying to go
+    redirect_to signin_path, :notice => "Please sign in to access this page."
+  end
+  
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    # takes the user to where they were trying to go, or if the URL
+    # no longer exists, takes them to some default URL
+    clear_return_to
+  end
+  
   private
 
     def user_from_remember_token
@@ -47,5 +64,14 @@ module SessionsHelper
       cookies.signed[:remember_token] || [nil, nil]
       # if the :remember_token key of cookies.signed is itself nil, 
       # it will then return an array of [nil, nil]
+    end
+
+    def store_location
+      session[:return_to] = request.fullpath
+      # stores the location in the session hash under the :return_to key
+    end
+
+    def clear_return_to
+      session[:return_to] = nil
     end
 end
